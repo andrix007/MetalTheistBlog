@@ -18,5 +18,6 @@ namespace MetalTheist.Data.Repositories
         Task<Article> GetArticleAsyncById(int id);
         Task<Article> GetArticleAsyncByMoniker(string moniker);
         Task<ArticleStatistic> GetArticleStatisticAsync(int id);
+        Task<ArticleStatistic> GetArticleStatisticAsync(string moniker);
     }
 }

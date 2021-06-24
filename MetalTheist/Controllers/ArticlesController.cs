@@ -33,7 +33,22 @@ namespace MetalTheist.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure: " + ex.Message);
             }
-            return BadRequest();
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Article>> GetArticleById(int id)
+        {
+            try
+            {
+                var result = await articleRepository.GetArticleAsyncById(id);
+                if (result == null) return NotFound($"There is no article with id {id}");
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure: " + ex.Message);
+            }
         }
     }
 }

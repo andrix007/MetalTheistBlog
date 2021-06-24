@@ -75,5 +75,14 @@ namespace MetalTheist.Data.Repositories
 
             return article.Statistics;
         }
+
+        public async Task<ArticleStatistic> GetArticleStatisticAsync(string moniker)
+        {
+            var article = await GetArticleAsyncByMoniker(moniker);
+
+            logger.LogInformation($"Getting the statistics for article {article.Title} ");
+
+            return article.Statistics;
+        }
     }
 }
