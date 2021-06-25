@@ -1,4 +1,5 @@
 using MetalTheist.Data;
+using MetalTheist.Data.Interfaces;
 using MetalTheist.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace MetalTheist
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IBandRepository, BandRepository>();
 
             services.AddControllers();
         }
