@@ -14,9 +14,9 @@ namespace MetalTheist.Data.Repositories
         void Delete<T>(T entity) where T : class;
         Task<bool> CommitAsync();
 
-        Task<List<Article>> GetAllArticlesAsync();
-        Task<Article> GetArticleAsyncById(int id);
-        Task<Article> GetArticleAsyncByMoniker(string moniker);
+        Task<List<Article>> GetAllArticlesAsync(bool includeStatistics);
+        Task<Article> GetArticleAsyncById(int id, bool includeStatistics = false);
+        Task<Article> GetArticleAsyncByMoniker(string moniker, bool includeStatistics = false);
         Task<ArticleStatistic> GetArticleStatisticAsync(int id);
         Task<ArticleStatistic> GetArticleStatisticAsync(string moniker);
     }

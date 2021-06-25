@@ -4,14 +4,16 @@ using MetalTheist.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MetalTheist.Migrations
 {
     [DbContext(typeof(MetalContext))]
-    partial class MetalContextModelSnapshot : ModelSnapshot
+    [Migration("20210625085721_StatisticNowNullable")]
+    partial class StatisticNowNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

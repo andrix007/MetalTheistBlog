@@ -25,11 +25,11 @@ namespace MetalTheist.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Article>>> Get()
+        public async Task<ActionResult<List<Article>>> Get(bool includeStatistics=false)
         {
             try
             {
-                var results = await articleRepository.GetAllArticlesAsync();
+                var results = await articleRepository.GetAllArticlesAsync(includeStatistics);
 
                 return results.OrderBy(r => r.Id).ToList();
             }
@@ -55,7 +55,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpGet("moniker")]
+        [HttpGet("{moniker}")]
         public async Task<ActionResult<Article>> GetArticleByMoniker(string moniker)
         {
             try
@@ -95,6 +95,10 @@ namespace MetalTheist.Controllers
                 if(await articleRepository.CommitAsync())
                 {
                     return Created("", article);
+                }
+                else
+                {
+                    return BadRequest("Failed to create new article");
                 }
 
                 return Ok();

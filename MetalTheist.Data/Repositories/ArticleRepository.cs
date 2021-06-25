@@ -39,37 +39,49 @@ namespace MetalTheist.Data.Repositories
             return (await metalContext.SaveChangesAsync()) > 0;
         }
 
-        public async Task<List<Article>> GetAllArticlesAsync()
+        public async Task<List<Article>> GetAllArticlesAsync(bool includeStatistics)
         {
             logger.LogInformation("Getting all Articles");
 
             IQueryable<Article> query = metalContext.Articles;
+            if(includeStatistics)
+            {
+                query = query.Include(a => a.Statistics);
+            }    
             query = query.OrderBy(a => a.Title);
 
             return await query.ToListAsync();
         }
 
-        public async Task<Article> GetArticleAsyncById(int id)
+        public async Task<Article> GetArticleAsyncById(int id, bool includeStatistics = false)
         {
             logger.LogInformation($"Getting an Article for id: {id}");
 
             IQueryable<Article> query = metalContext.Articles.Where(a => a.Id == id);
+            if(includeStatistics)
+            {
+                query = query.Include(a => a.Statistics);
+            }
 
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<Article> GetArticleAsyncByMoniker(string moniker)
+        public async Task<Article> GetArticleAsyncByMoniker(string moniker, bool includeStatistics = false)
         {
             logger.LogInformation($"Getting an Article for moniker: {moniker}");
 
             IQueryable<Article> query = metalContext.Articles.Where(a => a.Moniker == moniker);
+            if(includeStatistics)
+            {
+                query = query.Include(a => a.Statistics);
+            }
 
             return await query.FirstOrDefaultAsync();
         }
 
         public async Task<ArticleStatistic> GetArticleStatisticAsync(int id)
         {
-            var article = await GetArticleAsyncById(id);
+            var article = await GetArticleAsyncById(id,true);
 
             logger.LogInformation($"Getting the statistics for article {article.Title} ");
 
@@ -78,7 +90,7 @@ namespace MetalTheist.Data.Repositories
 
         public async Task<ArticleStatistic> GetArticleStatisticAsync(string moniker)
         {
-            var article = await GetArticleAsyncByMoniker(moniker);
+            var article = await GetArticleAsyncByMoniker(moniker,true);
 
             logger.LogInformation($"Getting the statistics for article {article.Title} ");
 

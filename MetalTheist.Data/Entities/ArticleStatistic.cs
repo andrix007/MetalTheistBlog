@@ -11,6 +11,5 @@ namespace MetalTheist.Core
     public class ArticleStatistic : Statistic
     {
         public int Id { get; set; }
-
     }
 }
