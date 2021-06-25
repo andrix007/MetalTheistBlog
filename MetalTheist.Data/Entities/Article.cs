@@ -13,7 +13,7 @@ namespace MetalTheist.Data.Entities
         public string ShortContent { get; set; }
         public string Title { get; set; }
         public string Moniker { get; set; } //special identifier
-        public DateTime UploadDate { get; set; }
+        public DateTime? UploadDate { get; set; }
         public Author Author { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
         public List<Tag> Tags { get; set; } = new List<Tag>();
