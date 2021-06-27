@@ -40,11 +40,11 @@ namespace MetalTheist.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Article>> GetArticleById(int id)
+        public async Task<ActionResult<Article>> GetArticleById(int id, bool includeStatistics=false)
         {
             try
             {
-                var result = await articleRepository.GetArticleAsyncById(id);
+                var result = await articleRepository.GetArticleAsyncById(id, includeStatistics);
                 if (result == null) return NotFound($"There is no article with id {id}");
 
                 return result;
@@ -56,11 +56,11 @@ namespace MetalTheist.Controllers
         }
 
         [HttpGet("{moniker}")]
-        public async Task<ActionResult<Article>> GetArticleByMoniker(string moniker)
+        public async Task<ActionResult<Article>> GetArticleByMoniker(string moniker, bool includeStatistics = false)
         {
             try
             {
-                var result = await articleRepository.GetArticleAsyncByMoniker(moniker);
+                var result = await articleRepository.GetArticleAsyncByMoniker(moniker,includeStatistics);
                 if (result == null) return NotFound($"There is no article with moniker {moniker}");
 
                 return result;

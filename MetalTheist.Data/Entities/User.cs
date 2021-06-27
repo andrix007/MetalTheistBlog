@@ -11,7 +11,7 @@ namespace MetalTheist.Data.Entities
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfRegistration { get; set; }
+        public DateTime? DateOfRegistration { get; set; }
         public List<Band> Bands { get; set; } = new List<Band>();
         public List<Article> Articles { get; set; } = new List<Article>();
     }

@@ -31,6 +31,7 @@ namespace MetalTheist
 
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IBandRepository, BandRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddControllers();
         }

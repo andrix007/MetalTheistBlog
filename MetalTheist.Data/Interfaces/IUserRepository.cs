@@ -14,10 +14,7 @@ namespace MetalTheist.Data.Interfaces
         void Delete<T>(T entity) where T : class;
         Task<bool> CommitAsync();
 
-        Task<List<Article>> GetAllArticlesAsync(bool includeStatistics);
-        Task<Article> GetArticleAsyncById(int id, bool includeStatistics = false);
-        Task<Article> GetArticleAsyncByMoniker(string moniker, bool includeStatistics = false);
-        Task<ArticleStatistic> GetArticleStatisticAsync(int id);
-        Task<ArticleStatistic> GetArticleStatisticAsync(string moniker);
+        Task<List<User>> GetAllUsersAsync(bool includeBands = false, bool includeArticles = false);
+        Task<User> GetUserAsyncById(int id, bool includeBands = false, bool includeArticles = false);
     }
 }
