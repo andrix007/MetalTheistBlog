@@ -24,7 +24,7 @@ namespace MetalTheist.Controllers
             this.linkGenerator = linkGenerator;
         }
 
-        [HttpGet]
+        [HttpGet] //Gets all the Users from the database
         public async Task<ActionResult<List<User>>> Get(bool includeBands=false, bool includeArticles=false)
         {
             try
@@ -39,7 +39,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}")] //Gets the User with id "id" from the database
         public async Task<ActionResult<User>> GetUserById(int id, bool includeBands=false, bool includeArticles=false)
         {
             try
@@ -55,7 +55,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] //Adds a User to the Users' table
         public async Task<ActionResult<User>> Post(User model, bool includeBands=false, bool includeArticles=false)
         {
             try
@@ -87,7 +87,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpPut("{id:int}")]
+        [HttpPut("{id:int}")] //Updates a User
         public async Task<ActionResult<User>> Put(int id, User model, bool includeBands=false, bool includeArticles=false)
         {
             try
@@ -109,7 +109,7 @@ namespace MetalTheist.Controllers
             return BadRequest("Failed to update User");
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int}")] //Deletes a User
         public async Task<IActionResult> Delete(int id)
         {
             try

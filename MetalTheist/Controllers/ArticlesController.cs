@@ -24,7 +24,7 @@ namespace MetalTheist.Controllers
             this.linkGenerator = linkGenerator;
         }
 
-        [HttpGet]
+        [HttpGet] //Gets all the Articles from the database
         public async Task<ActionResult<List<Article>>> Get(bool includeStatistics=false)
         {
             try
@@ -39,7 +39,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}")] //Gets the Article with id "id" from the database
         public async Task<ActionResult<Article>> GetArticleById(int id, bool includeStatistics=false)
         {
             try
@@ -55,7 +55,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpGet("{moniker}")]
+        [HttpGet("{moniker}")] //Gets the Article with moniker "moniker" from the database
         public async Task<ActionResult<Article>> GetArticleByMoniker(string moniker, bool includeStatistics = false)
         {
             try
@@ -71,7 +71,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] //Adds an Article to the database
         public async Task<ActionResult<Article>> Post(Article article)
         {
             try
@@ -109,7 +109,7 @@ namespace MetalTheist.Controllers
             }
         }
 
-        [HttpPut("{moniker}")]
+        [HttpPut("{moniker}")] //Updates the Article with moniker "moniker"
         public async Task<ActionResult<Article>> Put(string moniker, Article article)
         {
             try
@@ -131,7 +131,7 @@ namespace MetalTheist.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{id:int}")]
+        [HttpPut("{id:int}")] //Updates the Article with id "id"
         public async Task<ActionResult<Article>> Put(int id, Article article)
         {
             try
@@ -153,7 +153,7 @@ namespace MetalTheist.Controllers
             return BadRequest();
         }
 
-        [HttpDelete("{moniker}")]
+        [HttpDelete("{moniker}")] //Deletes the Article with moniker "moniker"
         public async Task<IActionResult> Delete(string moniker)
         {
             try
@@ -175,7 +175,7 @@ namespace MetalTheist.Controllers
             return BadRequest("Failed to delete the article!");
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int}")] //Deletes the Article with id "id"
         public async Task<IActionResult> Delete(int id)
         {
             try
